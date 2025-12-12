@@ -1,0 +1,87 @@
+/* Container background — use in App.css / index.css (global) */
+:root{
+  --card-bg: #f5fdff;
+  --card-inner-band: rgba(220,236,246,0.55);
+  --accent: #1E4E6D;
+}
+
+body {
+  /* keep App-level gradient centered */
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(1200px 400px at 10% 90%, rgba(26,122,168,0.12), transparent 10%),
+              linear-gradient(90deg, #cbe7fb 0%, #dff3ff 55%, #cde7f8 100%);
+  background-attachment: fixed;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* quiz card specific */
+.quiz-card { 
+  backdrop-filter: blur(0.5px);
+}
+
+/* sticker bubble (no external image) */
+.best-bubble .bubble {
+  background: linear-gradient(180deg,#ffffff,#f7ffff);
+  border: 4px solid #72c0e8;
+  border-radius: 14px;
+  padding: 10px 16px;
+  transform: rotate(-6deg);
+  box-shadow: 0 6px 18px rgba(20,50,80,0.08);
+}
+.best-bubble .bubble-text {
+  color: #074a5f;
+  font-weight: 700;
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 16px;
+}
+.best-bubble .bubble-tail {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-left: 4px solid #72c0e8;
+  transform: rotate(-25deg);
+  margin-left: -6px;
+  margin-top: 6px;
+  border-bottom-left-radius: 3px;
+}
+
+/* nav buttons */
+.nav-btn {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(180deg,#eef8ff,#e6f1fb);
+  border: 1px solid rgba(30,78,109,0.06);
+  box-shadow: 0 6px 12px rgba(16, 52, 86, 0.06);
+  cursor: pointer;
+}
+
+/* hand svg animation */
+.paw-svg {
+  transform-origin: center;
+  animation: pawBob 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 6px 12px rgba(14,60,90,0.08));
+}
+@keyframes pawBob {
+  0% { transform: translateY(6px) scale(0.98); }
+  40% { transform: translateY(-6px) scale(1.02); }
+  100% { transform: translateY(6px) scale(0.98); }
+}
+
+/* Make sure the card fits on common desktop heights and avoids scrolling */
+@media(min-width: 1024px) {
+  .quiz-card { height: 78vh; } /* keeps card within viewport on desktop */
+}
+@media(max-width: 1023px) {
+  .quiz-card { width: 92vw; height: auto; padding-bottom: 40px; }
+  .best-bubble { display:none; } /* hide decorative sticker on small screens */
+  .hand-wrap { display:none; }    /* hide animated hand on small screens */
+}
